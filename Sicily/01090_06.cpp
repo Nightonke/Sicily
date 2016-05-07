@@ -1,0 +1,78 @@
+// Problem#: 1090
+// Submission#: 2778858
+// The source code is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+// URI: http://creativecommons.org/licenses/by-nc-sa/3.0/
+// All Copyright reserved by Informatic Lab of Sun Yat-sen University
+#include <iostream>
+using namespace std;
+#define INF 99999999
+#define MAX 505
+
+int n, roads[MAX][MAX], ans_max;
+
+int Prim() {
+    bool used[n];
+    fill(used, used + n, false);
+    int mincost[n];
+    fill(mincost, mincost + n, INF);
+    mincost[0] = 0;
+    
+    ans_max = -INF;
+    int min_pos;
+    int sum = 0;
+    int counter = 1;
+    while (1) {
+        min_pos = -1;
+        for (int i = 0; i < n; i++) {
+            if (!used[i] && (min_pos == -1 || mincost[min_pos] > mincost[i])) {
+                min_pos = i;
+            }
+        }
+        if (min_pos == -1) {
+            break;
+        }
+        used[min_pos] = true;
+        sum += mincost[min_pos];
+        ans_max = ans_max > mincost[min_pos] ? ans_max : mincost[min_pos];
+        for (int i = 0; i < n; i++) {
+            mincost[i] = mincost[i] < roads[min_pos][i] ? mincost[i] : roads[min_pos][i];
+        }
+        
+        /*
+        cout << "step " << counter << ": " << endl;
+        cout << "the min_pos is " << min_pos << endl;
+        cout << "the renewed mincost is " << ": " << endl;
+        for (int i = 0; i < n; i++) {
+            cout << "mincost[ " << i << " ]" << " = " << mincost[i] << ";" << endl;
+        }
+        cout << endl;
+        */
+    }
+    return sum;
+}
+
+int main() {
+    
+    std :: ios :: sync_with_stdio(false);
+    
+    int case_num;
+    bool control_blank = false;
+    cin >> case_num;
+    while (case_num--) {
+        if (control_blank) {
+            cout << endl;
+        }
+        control_blank = true;
+        
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cin >> roads[i][j];
+            }
+        }
+        
+        Prim();
+        cout << ans_max << endl;
+    }
+    return 0;
+}                                 
