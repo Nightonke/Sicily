@@ -13,7 +13,7 @@ So now, stop fucking degenerating and start coding.
 
 There are 940 .cpp files in Sicily directory. For each file, it's name is XXXXX_YY.cpp, where XXXXX is the id for the corresponding problem in Sicily and YY is the number of submission that I submitted(start from 0). All solutions here are(were) accepted. For example, [01000_06.cpp](https://github.com/Nightonke/Sicily/blob/master/Sicily/01000_06.cpp) is the 7th submission for problem [1000](http://soj.sysu.edu.cn/1000).
 
-### No Just Codes
+### Not Just Codes
 
 I've writed some articles in my [blog](http://blog.csdn.net/u012925008) for some problems. Maybe you can get more information about the solutions there.
 
